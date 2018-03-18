@@ -4,12 +4,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 public class Ride {
 
 	private String name;
 	private int duration;
-
 }
