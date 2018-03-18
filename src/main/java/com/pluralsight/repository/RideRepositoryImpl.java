@@ -17,12 +17,11 @@ public class RideRepositoryImpl implements RideRepository {
 
 	@Override
 	public List<Ride> getRides() {
-		Ride ride = new Ride();
-		ride.setName("Corner Canyon");
-		ride.setDuration(120);
-		List <Ride> rides = new ArrayList<>();
-		rides.add(ride);
-		return rides;
+
+		return jdbcTemplate.query("select * from ride",
+				(rs, i) ->
+					new Ride(rs.getInt("id"), rs.getString("name"),
+							rs.getInt("duration")));
 	}
 
 	@Override
