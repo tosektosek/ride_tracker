@@ -3,6 +3,7 @@ package com.pluralsight.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.pluralsight.repository.util.RideRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,10 +19,11 @@ public class RideRepositoryImpl implements RideRepository {
 	@Override
 	public List<Ride> getRides() {
 
-		return jdbcTemplate.query("select * from ride",
-				(rs, i) ->
-					new Ride(rs.getInt("id"), rs.getString("name"),
-							rs.getInt("duration")));
+//		return jdbcTemplate.query("select * from ride",
+//				(rs, i) ->
+//					new Ride(rs.getInt("id"), rs.getString("name"),
+//							rs.getInt("duration")));
+		return jdbcTemplate.query("select * from ride", new RideRowMapper());
 	}
 
 	@Override
